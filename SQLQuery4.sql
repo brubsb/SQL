@@ -1,11 +1,11 @@
---Quest„o 1
+--Quest√£o 1
 
 --Etapa A
 
 --SELECT *
 --FROM DimProduct
 
---Aquantidade de produtos est· correta (2.517).
+--Aquantidade de produtos est√° correta (2.517).
 
 
 --Etapa B
@@ -13,11 +13,11 @@
 --SELECT *
 --FROM DimCustomer
 
---O n˙mero de clientes reduziu, no momento existem 18.869 clientes.
+--O n√∫mero de clientes reduziu, no momento existem 18.869 clientes.
 
 
 
---Quest„o 2
+--Quest√£o 2
 
 --Etapa A
 
@@ -36,7 +36,7 @@
 
 
 
---Quest„o 3
+--Quest√£o 3
 
 --Etapa A
 
@@ -66,9 +66,9 @@
 
 
 
---Quest„o 4 
+--Quest√£o 4 
 
---SELECT Manufacturer
+--SELECT DISTINCT Manufacturer
 --FROM DimProduct
 --SELECT
 --Manufacturer AS Fornecedor
@@ -76,7 +76,7 @@
 
 
 
---Quest„o 5
+--Quest√£o 5
 
 --SELECT DISTINCT ProductKey
 --FROM FactSales
@@ -84,10 +84,10 @@
 --2.516 (Produtos vendidos)
 
 
---SELECT DISTINCT ProductName
+--SELECT DISTINCT ProductKey
 --FROM DimProduct
 
 --2.517 (Produtos existentes)
 
 
---1 produto nao foi vendido
+--1 produto n√£o foi vendido
