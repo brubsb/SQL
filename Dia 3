@@ -1,48 +1,43 @@
 --Questão 1
 
 SELECT
-SUM(SalesQuantity) AS 'Quantidade Vendida'
+  SUM(SalesQuantity) AS 'Quantidade Vendida',
+  SUM(ReturnQuantity) AS 'Quantidade Devolvida'
 FROM FactSales
-
-SELECT
-SUM(DiscountQuantity) AS 'Quantidade Devolvida'
-FROM FactSales
+WHERE channelKey = 1
 
 
 --Questão 2
 
 SELECT
-AVG(YearlyIncome) AS 'Média Salarial Anual'
+  AVG(YearlyIncome) AS 'Média Salarial Anual'
 FROM DimCustomer
 WHERE Occupation = 'Professional'
 
 
 --Questão 3
 
+SELECT
+  MAX(EmployeeCount) AS 'Qtd. Funcionário',
+  MIN(EmployeeCount) AS 'Qtd. Funcionário'
+FROM DimStore
+
 --Loja com mais funcionários
 
 SELECT TOP(1)
-StoreName,
-EmployeeCount
+  StoreName,
+  EmployeeCount
 FROM DimStore
 ORDER BY EmployeeCount DESC
-
-SELECT
-MAX(EmployeeCount) AS 'Qtd. Funcionário'
-FROM DimStore
 
 --Loja com menos funcionários
 
 SELECT TOP(1)
-StoreName,
-EmployeeCount
+  StoreName,
+  EmployeeCount
 FROM DimStore
 WHERE EmployeeCount IS NOT NULL
 ORDER BY EmployeeCount ASC
-
-SELECT
-MIN(EmployeeCount) AS 'Qtd. Funcionário'
-FROM DimStore
 
 
 --Questão 4
@@ -50,14 +45,14 @@ FROM DimStore
 --Mulheres
 
 SELECT
-COUNT(EmployeeKey) AS 'Qtd. Mulheres'
+  COUNT(FirstName) AS 'Qtd. Mulheres'
 FROM DimEmployee
 WHERE Gender = 'F' AND EndDate IS NULL
 
 SELECT TOP(1)
-FirstName,
-EmailAddress,
-HireDate
+  FirstName,
+  EmailAddress,
+  HireDate
 FROM DimEmployee
 WHERE Gender = 'F'AND EndDate IS NULL
 ORDER BY HireDate
@@ -65,14 +60,14 @@ ORDER BY HireDate
 --Homens
 
 SELECT
-COUNT(EmployeeKey) AS 'Qtd. Homens'
+  COUNT(FirstName) AS 'Qtd. Homens'
 FROM DimEmployee
 WHERE Gender = 'M' AND EndDate IS NULL
 
 SELECT TOP(1)
-FirstName,
-EmailAddress,
-HireDate
+  FirstName,
+  EmailAddress,
+  HireDate
 FROM DimEmployee
 WHERE Gender = 'M'AND EndDate IS NULL
 ORDER BY HireDate
@@ -80,7 +75,7 @@ ORDER BY HireDate
 --Questão 5
 
 SELECT
-COUNT(DISTINCT ColorName) AS 'Qtd. Cores',
-COUNT(DISTINCT BrandName) AS 'Qtd. Marcas',
-COUNT(DISTINCT ClassName) AS 'Qtd. Classes de Produto'
+  COUNT(DISTINCT ColorName) AS 'Qtd. Cores',
+  COUNT(DISTINCT BrandName) AS 'Qtd. Marcas',
+    COUNT(DISTINCT ClassName) AS 'Qtd. Classes de Produto'
 FROM DimProduct
