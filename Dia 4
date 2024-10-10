@@ -21,11 +21,10 @@ GROUP BY StoreKey
 
 SELECT 
 	ChannelKey, 
-	SUM(SalesQuantity) AS 'Valor das Vendas'
+	SUM(SalesAmount) AS 'Valor das Vendas'
 FROM FactSales
 WHERE YEAR(DateKey) = 2007
 GROUP BY ChannelKey
-
 
 --Questão 2
 
