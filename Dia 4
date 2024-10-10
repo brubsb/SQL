@@ -1,4 +1,4 @@
---Quest„o 1
+--Quest√£o 1
 
 --A
 
@@ -13,7 +13,7 @@ GROUP BY ChannelKey
 SELECT 
 	StoreKey, 
     SUM(SalesQuantity) AS 'Qtd. Vendas', 
-    SUM(ReturnQuantity) AS 'Qtd. DevoluÁ„o'
+    SUM(ReturnQuantity) AS 'Qtd. Devolu√ß√£o'
 FROM FactSales
 GROUP BY StoreKey
 
@@ -21,25 +21,24 @@ GROUP BY StoreKey
 
 SELECT 
 	ChannelKey, 
-	SUM(SalesAmount) AS 'Valor das Vendas'
+	SUM(SalesQuantity) AS 'Valor das Vendas'
 FROM FactSales
 WHERE YEAR(DateKey) = 2007
 GROUP BY ChannelKey
 
 
---Quest„o 2
+--Quest√£o 2
 
 SELECT TOP(10)
 	ProductKey,
-	SUM(SalesQuantity) AS 'Qtd. Vendas',
 	SUM(SalesAmount) AS 'Valor das Vendas'
 FROM FactSales
 GROUP BY ProductKey
 --HAVING SUM(SalesAmount) > 5000000
-ORDER BY SUM(SalesQuantity) DESC
+ORDER BY SUM(SalesAmount) DESC
 
 
---Quest„o 3
+--Quest√£o 3
 
 --A
 
@@ -61,7 +60,7 @@ GROUP BY ProductKey
 ORDER BY SUM(SalesQuantity) DESC
 
 
---Quest„o 4
+--Quest√£o 4
 
 --A
 
@@ -75,7 +74,7 @@ GROUP BY BrandName
 
 SELECT DISTINCT
 	ClassName,
-	AVG(UnitPrice) AS 'PreÁo Unit·rio'
+	AVG(UnitPrice) AS 'Pre√ßo Unit√°rio'
 FROM DimProduct
 GROUP BY ClassName
 
@@ -88,7 +87,7 @@ FROM DimProduct
 GROUP BY ColorName
 
 
---Quest„o 5
+--Quest√£o 5
 
 SELECT
 	StockTypeName,
@@ -99,7 +98,7 @@ GROUP BY StockTypeName
 ORDER BY SUM(Weight) DESC
 
 
---Quest„o 6
+--Quest√£o 6
 
 SELECT
 	BrandName,
@@ -108,42 +107,44 @@ FROM DimProduct
 GROUP BY BrandName
 
 
---Quest„o 7
+--Quest√£o 7
 
 SELECT
 	Gender,
 	COUNT(CustomerKey) AS 'Total de Clienes',
-	AVG(YearlyIncome) AS 'MÈdia Salarial'
+	AVG(YearlyIncome) AS 'M√©dia Salarial'
 FROM DimCustomer
 WHERE Gender IS NOT NULL
 GROUP BY Gender
+ORDER BY COUNT(CustomerKey) DESC
 
 
---Quest„o 8
+--Quest√£o 8
 
 SELECT
 	Education,
 	COUNT(CustomerKey) AS 'Total de Clienes',
-	AVG(YearlyIncome) AS 'MÈdia Salarial'
+	AVG(YearlyIncome) AS 'M√©dia Salarial'
 FROM DimCustomer
+WHERE Education IS NOT NULL
 GROUP BY Education
 
 
---Quest„o 9
+--Quest√£o 9
 
 SELECT
 	DepartmentName,
-	COUNT(EmployeeKey) AS 'Total de Funcion·rios'
+	COUNT(EmployeeKey) AS 'Total de Funcion√°rios'
 FROM DimEmployee
 WHERE EndDate IS NULL
 GROUP BY DepartmentName
 
 
---Quest„o 10
+--Quest√£o 10
 
 SELECT
 	Title,
-	SUM(VacationHours) AS 'Total de Horas de FÈrias'
+	SUM(VacationHours) AS 'Total de Horas de F√©rias'
 FROM DimEmployee
 WHERE Gender = 'F' AND DepartmentName IN ('Production', 'Marketing', 'Engineering', 'Finance') AND HireDate BETWEEN '01/01/1999' AND '31/12/2000'
 GROUP BY Title
