@@ -38,10 +38,7 @@ ON s.GeographyKey = g.GeographyKey;
 --Questão 4
 
 SELECT 
-    p.ProductKey, 
     p.ProductName, 
-    ps.ProductSubcategoryName, 
-    pc.ProductCategoryName, 
     pc.ProductCategoryDescription
 FROM DimProduct p
 LEFT JOIN DimProductSubcategory ps 
@@ -52,8 +49,12 @@ ON ps.ProductCategoryKey = pc.ProductCategoryKey;
 
 --Questão 5
 
+--A
+
 SELECT TOP(100) *
 FROM FactStrategyPlan;
+
+--B
 
 SELECT 
     fsp.StrategyPlanKey, 
@@ -67,46 +68,43 @@ ON fsp.AccountKey = da.AccountKey;
 
 --Questão 6
 
-SELECT 
-    fsp.StrategyPlanKey, 
-    fsp.DateKey, 
-    ds.ScenarioName, 
-    fsp.Amount
-FROM FactStrategyPlan fsp
-INNER JOIN DimScenario ds 
-ON fsp.ScenarioKey = ds.ScenarioKey;
+SELECT
+	StrategyPlanKey,
+	DateKey,
+	DimScenario.ScenarioName,
+	Amount
+FROM FactStrategyPlan
+INNER JOIN DimScenario
+ON FactStrategyPlan.ScenarioKey = DimScenario.ScenarioKey
 
 
 --Questão 7
 
-SELECT 
-    ps.ProductSubcategoryKey, 
-    ps.ProductSubcategoryName
-FROM DimProductSubcategory ps
-LEFT JOIN DimProduct p 
-ON ps.ProductSubcategoryKey = p.ProductSubcategoryKey
-WHERE p.ProductKey IS NULL;
+SELECT
+	ProductSubcategoryName,
+	DimProduct.ProductSubcategoryKey
+FROM DimProductSubcategory
+LEFT JOIN DimProduct
+ON DimProductSubcategory.ProductSubcategoryKey = DimProduct.ProductSubcategoryKey
+WHERE DimProduct.ProductSubcategoryKey IS NULL;
 
 
 --Questão 8
 
-SELECT
-BrandName,
-DimChannel.ChannelName
-FROM DimProduct
-INNER JOIN FactSales
-ON FactSales.ProductKey = DimProduct.Productkey
-INNER JOIN DimChannel
-ON DimChannel.ChannelKey = FactSales.ChannelKey
+SELECT DISTINCT
+	BrandName,
+	ChannelName
+FROM DimProduct CROSS JOIN DimChannel
+WHERE BrandName IN ('Contoso', 'Fabrikam', 'Litware')
 
 
 --Questão 09
 
-SELECT 
-OnlineSalesKey,
-DateKey,
-PromotionName,
-SalesAmount	
+SELECT top(1000)
+	OnlineSalesKey,
+	DateKey,
+	PromotionName,
+	SalesAmount	
 FROM FactOnlineSales
 INNER JOIN DimPromotion
 ON FactOnlineSales.PromotionKey = DimPromotion.PromotionKey
@@ -116,12 +114,12 @@ ORDER BY DateKey ASC
 
 --Questão 10
 
-SELECT 
-FactSales.SalesKey,
-DimChannel.ChannelName,
-DimStore.StoreName,
-DimProduct.ProductName,
-FactSales.SalesAmount
+SELECT TOP(100)
+	FactSales.SalesKey,
+	DimChannel.ChannelName,
+	DimStore.StoreName,
+	DimProduct.ProductName,
+	FactSales.SalesAmount
 FROM FactSales
 INNER JOIN DimChannel
 ON FactSales.channelKey = DimChannel.ChannelKey
