@@ -94,11 +94,11 @@ INNER JOIN Clientes ON Pedidos.ClienteID = Clientes.ClienteID;
 --Questão 4
 
 SELECT 
-	COUNT(NomeCliente)
+	NomeCliente
 FROM Clientes
 UNION ALL
 SELECT 
-	COUNT(Clientes.ClienteID)
+	Clientes.NomeCliente
 FROM Pedidos
 INNER JOIN Clientes ON Pedidos.ClienteID = Clientes.ClienteID;
 
