@@ -1,0 +1,104 @@
+--Questão 1
+
+CREATE DATABASE BD_Teste;
+DROP DATABASE BD_Teste;
+CREATE DATABASE Exercicios;
+
+
+--Questão 2
+
+CREATE TABLE dCliente (
+	ID_Cliente INT PRIMARY KEY,
+	Nome_Cliente VARCHAR(50) NOT NULL,
+	Data_de_Nascimento DATE NOT NULL
+);
+
+CREATE TABLE dGerente (
+	ID_Gerente INT PRIMARY KEY,
+	Nome_Gerente VARCHAR(50) NOT NULL,
+	Data_de_Contratacao DATETIME NOT NULL,
+	Salario FLOAT NOT NULL
+);
+
+CREATE TABLE fContratos (
+	ID_Contrato INT PRIMARY KEY,
+	Data_de_Assinatura DATE NOT NULL,
+	ID_Cliente INT,
+	ID_Gerente INT,
+	Valor_do_Contrato FLOAT NOT NULL
+);
+
+SELECT * FROM dCliente
+SELECT * FROM dGerente
+SELECT * FROM fContratos
+
+
+--Questão 3
+
+ALTER TABLE dCliente
+ALTER COLUMN Data_de_Nascimento DATETIME NOT NULL;
+ALTER TABLE fContratos
+ALTER COLUMN Data_de_Assinatura DATETIME NOT NULL;
+
+INSERT INTO dCliente (ID_Cliente, Nome_Cliente, Data_de_Nascimento)
+VALUES
+    (1, 'André Martins', '1989-12-02 00:00:00.000'),
+    (2, 'Bárbara Campos', '1992-07-05 00:00:00.000'),
+    (3, 'Carol Freitas', '1985-23-04 00:00:00.000'),
+    (4, 'Diego Cardoso', '1994-11-10 00:00:00.000'),
+    (5, 'Eduardo Pereira', '1988-09-11 00:00:00.000'),
+    (6, 'Fabiana Silva', '1989-02-09 00:00:00.000'),
+    (7, 'Gustavo Barbosa', '1993-27-06 00:00:00.000'),
+	(8, 'Helen Viana', '1990-11-02 00:00:00.000');
+
+INSERT INTO dGerente (ID_Gerente, Nome_Gerente, Data_de_Contratacao, Salario)
+VALUES
+    (1, 'Lucas Sampaio', '2015-21-03 00:00:00.000', '6700'),
+    (2, 'Mariana Padilha', '2011-10-01 00:00:00.000', '9900'),
+    (3, 'Nathália Santos', '2018-03-10 00:00:00.000', '7200'),
+    (4, 'Otávio Costa', '2017-18-04 00:00:00.000', '11000');
+
+INSERT INTO fContratos (ID_Contrato, Data_de_Assinatura, ID_Cliente, ID_Gerente, Valor_do_Contrato)
+VALUES
+    (1, '2019-12-01 00:00:00.000', '8', '1', '23000'),
+    (2, '2019-10-02 00:00:00.000', '3', '2', '15500'),
+    (3, '2019-07-03 00:00:00.000', '7', '2', '6500'),
+    (4, '2019-15-03 00:00:00.000', '1', '3', '33000'),
+    (5, '2019-21-03 00:00:00.000', '5', '4', '11100'),
+    (6, '2019-23-03 00:00:00.000', '4', '2', '5500'),
+    (7, '2019-28-03 00:00:00.000', '9', '3', '55000'),
+	(8, '2019-04-04 00:00:00.000', '2', '1', '31000'),
+	(9, '2019-05-04 00:00:00.000', '10', '4', '3400'),
+	(10, '2019-05-05 00:00:00.000', '6', '2', '9200');
+
+
+--Questão 4
+
+INSERT INTO dCliente (ID_Cliente, Nome_Cliente, Data_de_Nascimento)
+VALUES
+    (9, 'Maria Heloisa', '1999-24-03 00:00:00.000');
+
+
+INSERT INTO dGerente (ID_Gerente, Nome_Gerente, Data_de_Contratacao, Salario)
+VALUES
+    (5, 'Rafaela Botelho', '2019-20-04 00:00:00.000', '6800');
+
+
+INSERT INTO fContratos (ID_Contrato, Data_de_Assinatura, ID_Cliente, ID_Gerente, Valor_do_Contrato)
+VALUES
+    (11, '2019-06-05 00:00:00.000', '9', '5', '26000');
+
+
+--Questão 5
+
+UPDATE fContratos 
+SET Data_de_Assinatura = '2019-17-03 00:00:00.000',
+	ID_Gerente = '2',
+	Valor_do_Contrato = '33500'
+WHERE ID_Cliente = 4
+
+
+--Questão 6
+
+DELETE FROM fContratos
+WHERE ID_Contrato = 11
