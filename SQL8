@@ -1,4 +1,4 @@
---Quest„o 1
+--Quest√£o 1
 
 DECLARE @valor1 INT = 10;
 DECLARE @valor2 INT = 5;
@@ -22,7 +22,7 @@ SELECT @soma AS Soma,
 
 
 
---Quest„o 2
+--Quest√£o 2
 
 DECLARE @produto NVARCHAR(50) = 'Celular';
 DECLARE @quantidade INT = 12;  
@@ -38,23 +38,23 @@ SELECT @produto AS Produto,
 
 
 
---Quest„o 3
+--Quest√£o 3
 
 DECLARE @nome VARCHAR(50);
 DECLARE @data_nascimento DATE;
 DECLARE @num_pets INT;
 
-SET @nome = 'AndrÈ';
+SET @nome = 'Andr√©';
 SET @data_nascimento = '1998-02-10';
 SET @num_pets = 2;
 
-SELECT 'Meu nome È ' + @nome + 
+SELECT 'Meu nome √© ' + @nome + 
        ', nasci em ' + FORMAT(@data_nascimento, 'dd/MM/yyyy') + 
        ' e tenho ' + CAST(@num_pets AS VARCHAR) + ' pets.';
 
 
 
---Quest„o 4
+--Quest√£o 4
 
 DECLARE @nome_das_lojas NVARCHAR(MAX);
 
@@ -66,7 +66,7 @@ PRINT 'As lojas fechadas no ano de 2008 foram: ' + @nome_das_lojas;
 
 
 
---Quest„o 5
+--Quest√£o 5
 
 DECLARE @subcategoria NVARCHAR(50);
 SET @subcategoria = 'Lamps';
